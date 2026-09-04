@@ -1,0 +1,15 @@
+[project]
+name = "broken-plugin"
+version = "0.0.1"
+description = "A command group that fails to import, used to test gkh-cli end to end."
+requires-python = ">=3.12"
+
+[project.entry-points."gkh.commands"]
+broken = "broken_plugin.cli:app"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-root = ""

@@ -1,0 +1,16 @@
+[project]
+name = "demo-plugin"
+version = "1.2.3"
+description = "A working command group, used to test gkh-cli end to end."
+requires-python = ">=3.12"
+dependencies = ["typer>=0.27.2"]
+
+[project.entry-points."gkh.commands"]
+demo = "demo_plugin.cli:app"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-root = ""
