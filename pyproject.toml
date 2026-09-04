@@ -1,0 +1,57 @@
+[project]
+name = "gkh-cli"
+version = "0.1.0"
+description = "Command line interface for the GEO Knowledge Hub."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.12"
+authors = [{ name = "Felipe Carlos", email = "efelipecarlos@gmail.com" }]
+keywords = ["GEO Knowledge Hub", "Earth Observations", "CLI"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering :: GIS",
+]
+dependencies = ["typer>=0.27.2"]
+
+[project.urls]
+Homepage = "https://gkhub.earthobservations.org"
+Repository = "https://github.com/geo-knowledge-hub/gkh-cli"
+
+[project.scripts]
+gkh = "gkh_cli.cli:app"
+
+[dependency-groups]
+dev = ["pytest>=9.1.1", "ruff>=0.16.5"]
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-root = ""
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-m 'not integration'"
+markers = ["integration: builds and installs the package; slow, needs uv"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "D", "ANN", "RUF"]
+ignore = ["D203", "D213", "D202", "ANN2", "ANN401"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["D", "ANN"]
