@@ -62,7 +62,7 @@ def test_the_console_script_is_installed(gkh):
     result = run(gkh, "--version")
 
     assert result.returncode == 0
-    assert result.stdout.startswith("gkh ")
+    assert result.stdout.startswith("gkh-cli ")
 
 
 def test_version_names_the_installed_plugins(gkh):

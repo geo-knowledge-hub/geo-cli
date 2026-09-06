@@ -11,6 +11,7 @@
 from typer.testing import CliRunner
 
 from gkh_cli.cli import app
+from gkh_cli.version import __version__
 from tests.conftest import make_entry_point, make_group
 
 #
@@ -110,6 +111,15 @@ def test_version_loads_no_group(installed):
 
     assert result.exit_code == 0
     assert entry_points[0].loads == []
+
+
+def test_version_names_the_cli_itself(installed):
+    installed()
+
+    result = runner.invoke(app, ["--version"])
+
+    assert result.exit_code == 0
+    assert result.stdout.startswith(f"gkh-cli {__version__}")
 
 
 def test_version_names_every_group(installed):
